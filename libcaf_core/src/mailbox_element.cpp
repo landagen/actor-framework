@@ -51,7 +51,7 @@ public:
   }
 
   type_erased_tuple& content() override {
-    return msg_.content();
+    return msg_;
   }
 
   const type_erased_tuple& content() const override {

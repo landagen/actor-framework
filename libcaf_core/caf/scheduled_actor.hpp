@@ -824,6 +824,8 @@ public:
   }
 */
 
+  void push_to_cache(mailbox_element_ptr ptr);
+
   /// @endcond
 
   /// Returns the queue for storing incoming messages.
@@ -865,8 +867,6 @@ protected:
   }
 
   bool handle_stream_msg(mailbox_element& x, behavior* active_behavior);
-
-  void push_to_cache(mailbox_element_ptr ptr);
 
   // -- Member Variables -------------------------------------------------------
 
