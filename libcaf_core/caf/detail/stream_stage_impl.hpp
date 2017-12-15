@@ -67,7 +67,8 @@ public:
   }
 
   bool done() const override {
-    return this->inbound_paths_.empty() && out_.clean();
+    return this->pending_handshakes_ == 0 && this->inbound_paths_.empty()
+           && out_.clean();
   }
 
   error handle(inbound_path*, downstream_msg::batch& x) override {
@@ -83,7 +84,7 @@ public:
     return sec::unexpected_message;
   }
 
-  message make_output_token(const stream_id&) const override {
+  message make_handshake() const override {
     return make_message_from_tuple(driver_.make_handshake());
   }
 
