@@ -32,7 +32,7 @@ namespace caf {
 namespace opencl {
 
 void throwcl(const char* fname, cl_int err);
-void pfn_notify(const char* errinfo, const void*, size_t, void*);
+void __stdcall pfn_notify(const char* errinfo, const void*, size_t, void*);
 
 // call convention for simply calling a function
 template <class F, class... Ts>

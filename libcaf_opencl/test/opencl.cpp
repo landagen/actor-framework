@@ -458,7 +458,7 @@ void test_opencl(actor_system& sys) {
     return problem_size;
   };
   // constant memory arguments
-  const ivec arr7{problem_size};
+  const ivec arr7{static_cast<int>(problem_size)};
   auto w7 = mngr.spawn(kernel_source, kn_const,
                        opencl::nd_range{dims{problem_size}},
                        opencl::in<int>{},
@@ -759,7 +759,7 @@ void test_in_val_out_val(actor_system& sys) {
   // calculator function for getting the size of the output
   auto res_size2 = [](const ivec&) { return problem_size; };
   // constant memory arguments
-  const ivec input2{problem_size};
+  const ivec input2{static_cast<int>(problem_size)};
   auto w6 = mngr.spawn(kernel_source, kn_const,
                            nd_range{dims{problem_size}},
                            in<int>{}, out<int>{res_size2});
