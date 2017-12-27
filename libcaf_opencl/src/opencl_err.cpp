@@ -32,7 +32,11 @@ void throwcl(const char* fname, cl_int err) {
   }
 }
 
+#ifdef CAF_WINDOWS
 void __stdcall pfn_notify(const char* errinfo, const void*, size_t, void*) {
+#else
+void pfn_notify(const char* errinfo, const void*, size_t, void*) {
+#endif
   CAF_LOG_ERROR("\n##### Error message via pfn_notify #####\n"
                 << errinfo <<
                 "\n########################################");

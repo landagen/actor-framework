@@ -32,8 +32,11 @@ namespace caf {
 namespace opencl {
 
 void throwcl(const char* fname, cl_int err);
+#ifdef CAF_WINDOWS
 void __stdcall pfn_notify(const char* errinfo, const void*, size_t, void*);
-
+#else
+void pfn_notify(const char* errinfo, const void*, size_t, void*);
+#endif
 // call convention for simply calling a function
 template <class F, class... Ts>
 void v1callcl(const char* fname, F f, Ts&&... vs) {
